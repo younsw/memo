@@ -23,30 +23,25 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
 		<section class="d-flex justify-content-center">
-			<div class="col-7">
-				<h1 class="text-center">메모 리스트</h1>
-				<table class="table text-center">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th>제목</th>
-							<th>시간</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:forEach var="memo" items="${memoList }">
-						<tr>
-							<td>${memo.id }</td>
-							<td><a href="/post/detail/view?id=${memo.id }">${memo.subject }</a></td>
-							<td><fmt:formatDate value="${memo.createdAt }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
-						</tr>
-					</c:forEach>
-					</tbody>
-				</table>
-				<div class="text-right">
-					<a href="/post/creat/view" class="btn-success btn">글쓰기</a>
+		
+			<div class="col-6 my-4"> 
+				<h1 class="text-center">메모 입력</h1>
+				<div class="d-flex">
+					<label>제목 </label>
+					<input type="text" class="form-control col-11" id="titleInput" value=${memo.subject }> 
 				</div>
+				<textarea rows="5" class="form-control" id="contentInput">${memo.content }</textarea>
+				<img class="w-100" src="${memo.image }">
+				<div class="d-flex justify-content-between mt-3">
+					<div>
+						<a href="/post/list/view" class="btn btn-info">목록으로</a>
+						<button type="button" class="btn btn-danger">삭제</button>
+					</div>
+					<button type="button" id="saveBtn" class="btn btn-info">수정</button>
+				</div>
+				
 			</div>
+			
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
